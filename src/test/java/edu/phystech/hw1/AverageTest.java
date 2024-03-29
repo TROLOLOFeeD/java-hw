@@ -9,17 +9,17 @@ public class AverageTest {
     // количество параметров, то есть вызов функции будет выглядеть так:
     // average(1), average(1, 2), average(1, 2, 3, 4, 5, 10) и тп.
 
-    private static double average(int first) {
-        return first;
-    }
+//    private static double average(int first) {
+//        return first;
+//    }
 
 //   private static double average(int first, int second) {
 //            return (first + second) / 2;
 //    }
 
-    private static double average(int first, int second, int third) {
-        return (first + second + third) / 3;
-    }
+//    private static double average(int first, int second, int third) {
+//        return (first + second + third) / 3;
+//    }
 
     private static double average(int... arr) {
         if (arr.length == 0) {
