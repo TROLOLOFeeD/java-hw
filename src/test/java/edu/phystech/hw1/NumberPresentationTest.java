@@ -6,15 +6,56 @@ import org.junit.jupiter.api.Assertions;
 public class NumberPresentationTest {
 
     private static String toBinary(int x) {
-        return "";
+        if (x > 0) {
+            String out = "";
+            while (x > 0) {
+                out = out + (x % 2);
+                x /= 2;
+            }
+            return new StringBuilder(out).reverse().toString();
+        } else {
+            return "0";
+        }
     }
 
     private static String toOct(int x) {
-        return "";
+        if (x > 0) {
+            String out = "";
+            while (x > 0) {
+                out = out + (x % 8);
+                x /= 8;
+            }
+            return new StringBuilder(out).reverse().toString();
+        } else {
+            return "0";
+        }
     }
 
     private static String toHex(int x) {
-        return "";
+        if (x > 0) {
+            String out = "";
+            while (x > 0) {
+                if (x % 16 < 10) {
+                    out = out + (x % 16);
+                } else if (x % 16 == 10) {
+                    out = out + "a";
+                } else if (x % 16 == 11) {
+                    out += "b";
+                } else if (x % 16 == 12) {
+                    out += "c";
+                } else if (x % 16 == 13) {
+                    out += "d";
+                } else if (x % 16 == 14) {
+                    out += "e";
+                } else if (x % 16 == 15) {
+                    out += "f";
+                }
+                x /= 16;
+            }
+            return new StringBuilder(out).reverse().toString();
+        } else {
+            return "0";
+        }
     }
 
     @Test

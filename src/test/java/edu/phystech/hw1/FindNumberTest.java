@@ -9,7 +9,18 @@ import org.junit.jupiter.api.Assertions;
 
 public class FindNumberTest {
     private static int findNumber(int[] input, int element) {
-        return -1;
+        boolean werepermution = false;
+        int l = 0;
+        int r = input.length - 1;
+        int pivot = 0;
+        while (l <= r && werepermution != true) {
+            pivot = (l + r) / 2;
+            if (input[pivot] == element) werepermution = true;
+            if (input[pivot] > element) r = pivot - 1;
+            else l = pivot + 1;
+        }
+        if (werepermution) return pivot;
+        else return -1;
     }
 
 

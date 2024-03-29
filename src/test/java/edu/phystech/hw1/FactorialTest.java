@@ -9,7 +9,9 @@ public class FactorialTest {
 
 
     private static long factorial(int n) {
-        return 0;
+        if (n > 0) {
+            return (factorial(n - 1) * n);
+        } else return 1;
     }
 
     @Test
