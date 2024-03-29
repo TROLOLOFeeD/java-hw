@@ -13,9 +13,9 @@ public class AverageTest {
         return first;
     }
 
-    private static double average(int first, int second) {
-        return (first + second) / 2;
-    }
+//   private static double average(int first, int second) {
+//            return (first + second) / 2;
+//    }
 
     private static double average(int first, int second, int third) {
         return (first + second + third) / 3;
@@ -25,7 +25,7 @@ public class AverageTest {
         if (arr.length == 0) {
             return 0;
         } else {
-            int sum = 0;
+            double sum = 0;
             for (int a : arr) {
                 sum += a;
             }
@@ -45,7 +45,7 @@ public class AverageTest {
         Assertions.assertEquals(0, average());
         Assertions.assertEquals(3.5, average(1, 2, 3, 4, 5, 6));
         Assertions.assertEquals(6.5, average(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12));
-
+        Assertions.assertEquals(((double) Integer.MAX_VALUE + 1) / 2, average(1, Integer.MAX_VALUE));
 
     }
 }

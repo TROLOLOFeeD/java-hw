@@ -37,18 +37,25 @@ public class NumberPresentationTest {
             while (x > 0) {
                 if (x % 16 < 10) {
                     out = out + (x % 16);
-                } else if (x % 16 == 10) {
-                    out = out + "a";
-                } else if (x % 16 == 11) {
-                    out += "b";
-                } else if (x % 16 == 12) {
-                    out += "c";
-                } else if (x % 16 == 13) {
-                    out += "d";
-                } else if (x % 16 == 14) {
-                    out += "e";
-                } else if (x % 16 == 15) {
-                    out += "f";
+                } else switch (x % 16) {
+                    case 10:
+                        out += "a";
+                        break;
+                    case 11:
+                        out += "b";
+                        break;
+                    case 12:
+                        out += "c";
+                        break;
+                    case 13:
+                        out += "d";
+                        break;
+                    case 14:
+                        out += "e";
+                        break;
+                    case 15:
+                        out += "f";
+                        break;
                 }
                 x /= 16;
             }
