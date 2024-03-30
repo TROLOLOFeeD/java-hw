@@ -1,6 +1,7 @@
 package edu.phystech.hw1;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
@@ -8,7 +9,17 @@ import org.junit.jupiter.api.Assertions;
 public class ReverseTest {
 
     private static int[] reverse(int[] nums) {
-        return nums;
+        if (nums.length > 1) {
+            int[] num_ = new int[nums.length];
+            for (int i = 0; i < nums.length / 2; ++i) {
+                num_[i] = nums[nums.length - i - 1];
+                num_[nums.length - i - 1] = nums[i];
+            }
+            if (nums.length % 2 == 1) {
+                num_[nums.length / 2] = nums[nums.length / 2];
+            }
+            return num_;
+        } else return nums;
     }
 
 
