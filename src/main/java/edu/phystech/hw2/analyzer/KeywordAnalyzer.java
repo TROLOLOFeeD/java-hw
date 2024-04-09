@@ -16,4 +16,9 @@ public abstract class KeywordAnalyzer implements TextAnalyzer {
     public Label processText(String text) {
         return null;
     }
+
+    public List<String> getKeywords() {
+        if (null != this.keywords) return this.keywords;
+        return null;
+    }
 }

@@ -15,7 +15,16 @@ import org.junit.jupiter.api.Assertions;
 class ToUpperCaseOperator implements UnaryOperator<String> {
     @Override
     public String apply(String s) {
-        return s;
+        int caseId = (int) 'a';
+        String upperS = "";
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) >= caseId) {
+                upperS = upperS + (char) (s.charAt(i) - (0xF + 1) * 2);
+            } else {
+                upperS = upperS + s.charAt(i);
+            }
+        }
+        return upperS;
     }
 }
 
@@ -24,7 +33,7 @@ class AbsMaxOperator implements BinaryOperator<Integer> {
 
     @Override
     public Integer apply(Integer integer, Integer integer2) {
-        return 0;
+        return Math.max(Math.abs(integer), Math.abs(integer2));
     }
 }
 
@@ -32,7 +41,7 @@ class StringLengthMoreThan5 implements Predicate<String> {
 
     @Override
     public boolean test(String s) {
-        return true;
+        return (s.length() > 5);
     }
 }
 
@@ -42,18 +51,30 @@ class IsNumberASquareOfAnotherNumber implements Predicate<Integer> {
 
     @Override
     public boolean test(Integer integer) {
-        return true;
+        if (integer == 1) return true;
+        for (int i = 1; i <= integer / 2; ++i) {
+            if (i * i == integer) return true;
+        }
+        return false;
     }
 }
 
 // Возвращает четные числа, начиная с from включительно, если в from нечетное число, то начиная с первого четного с from
 class EvenNumberSupplier implements Supplier<Integer> {
 
-    public EvenNumberSupplier(int from) {}
+    private int from;
+
+    public EvenNumberSupplier(int from) {
+        if (from % 2 != 0) {
+            from = from + 1;
+        }
+        this.from = from;
+    }
 
     @Override
     public Integer get() {
-        return 0;
+        from += 2;
+        return from - 2;
     }
 }
 
