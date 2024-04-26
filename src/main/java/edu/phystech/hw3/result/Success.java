@@ -12,27 +12,44 @@ public final class Success<T> implements Result<T> {
 
     @Override
     public boolean isFailure() {
-        return false;
+        if (value == null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
     public boolean isSuccess() {
-        return false;
+        if (value != null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
     public T getOrDefault(T defaultValue) {
-        return null;
+        if (value != null) {
+            return (T) value;
+        } else {
+            return defaultValue;
+        }
     }
 
     @Override
     public Throwable getExceptionOrNull() {
-        return null;
+        if (value != null) {
+            return null;
+        } else {
+            Throwable out = new Throwable("Error");
+            return out;
+        }
     }
 
     @Override
     public <R> Result<R> map(Function<T, R> transform) {
-        return null;
+        return new Success<>(transform.apply(value));
     }
 
 }

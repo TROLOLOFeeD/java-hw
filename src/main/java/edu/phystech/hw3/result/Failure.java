@@ -11,26 +11,47 @@ public final class Failure<T> implements Result<T> {
 
     @Override
     public boolean isFailure() {
-        return false;
+        if (e != null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
     public boolean isSuccess() {
-        return false;
+        if (e == null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
     public T getOrDefault(T defaultValue) {
-        return null;
+        if (e == null) {
+            return defaultValue;
+        } else {
+            return null;
+        }
     }
 
     @Override
     public Throwable getExceptionOrNull() {
-        return null;
+        if (e != null) {
+            return e;
+        } else {
+            return null;
+        }
     }
 
+    //    Каюсь, не совладал
     @Override
     public <R> Result<R> map(Function<T, R> transform) {
-        return null;
+        if (isFailure()) {
+            return new Failure<>(e);
+        } else {
+            return new Failure<>(e);
+        }
     }
 }
