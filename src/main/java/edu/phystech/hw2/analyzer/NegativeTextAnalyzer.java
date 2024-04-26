@@ -12,13 +12,13 @@ public class NegativeTextAnalyzer extends KeywordAnalyzer {
 
     public Label processText(String text) {
         for (String word : this.getKeywords()) {
-            if (text.indexOf(word) == text.length() - 2 && text.indexOf(' ' + word) != -1) {
+            if (text.indexOf(word) == text.length() - 2) {
                 return Label.NEGATIVE;
             }
-            if (text.indexOf(word) == 0 && text.indexOf(word + ' ') != -1) {
+            if (text.indexOf(word) == 0) {
                 return Label.NEGATIVE;
             }
-            if (text.indexOf(' ' + word + ' ') != -1) {
+            if (text.contains(' ' + word + ' ')) {
                 return Label.NEGATIVE;
             }
         }

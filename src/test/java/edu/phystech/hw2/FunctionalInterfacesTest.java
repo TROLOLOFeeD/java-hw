@@ -41,7 +41,7 @@ class StringLengthMoreThan5 implements Predicate<String> {
 
     @Override
     public boolean test(String s) {
-        return (s.length() > 5);
+        return s.length() > 5;
     }
 }
 
@@ -51,11 +51,18 @@ class IsNumberASquareOfAnotherNumber implements Predicate<Integer> {
 
     @Override
     public boolean test(Integer integer) {
-        if (integer == 1) return true;
-        for (int i = 1; i <= integer / 2; ++i) {
-            if (i * i == integer) return true;
+        boolean result = false;
+        if (integer == 1) {
+            result = true;
+        } else {
+            for (int i = 1; i <= integer / 2; ++i) {
+                if (i * i == integer) {
+                    result = true;
+                    break;
+                }
+            }
         }
-        return false;
+        return result;
     }
 }
 
@@ -73,6 +80,9 @@ class EvenNumberSupplier implements Supplier<Integer> {
 
     @Override
     public Integer get() {
+        if (from + 2 < from) {
+            from = 0;
+        }
         from += 2;
         return from - 2;
     }

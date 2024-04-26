@@ -8,8 +8,7 @@ record Contact(String username, String email) implements Comparable<Contact> {
         if (username.isBlank()) {
             throw new InvalidContactFieldException("username");
         }
-        if (email.matches("[A-Za-z0-9].*?@gmail\\.com") || email.equals("unknown")) {
-        } else {
+        if (!email.matches("[A-Za-z0-9].*?@gmail\\.com") && !email.equals("unknown")) {
             throw new InvalidContactFieldException("email");
         }
     }
