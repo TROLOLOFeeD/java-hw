@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 public class InverseMapKeyValuesTest {
 
     public static <K, V> Map<V, Collection<K>> inverse(Map<? extends K, ? extends V> map) {
-        HashMap<V, Collection<K>> result = new HashMap<>();
+        Map<V, Collection<K>> result = new HashMap<>();
 
         for (Map.Entry<? extends K, ? extends V> entry : map.entrySet()) {
             V value = entry.getValue();
