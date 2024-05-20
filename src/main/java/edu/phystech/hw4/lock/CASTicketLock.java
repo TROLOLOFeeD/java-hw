@@ -8,8 +8,7 @@ public class CASTicketLock {
 
     public void lock() {
         int ticket = nextTicket.getAndIncrement();
-        while (true) {
-            if (ticket == currentTicket.get()) break;
+        while (!(ticket == currentTicket.get())) {
         }
     }
 
