@@ -34,7 +34,6 @@ public class AverageTest {
     }
 
 
-
     @Test
     public void calculateAverage() {
         Assertions.assertEquals(5d, average(5));
